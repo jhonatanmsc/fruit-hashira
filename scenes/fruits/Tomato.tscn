@@ -1,12 +1,13 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scripts/Fruit.gd" type="Script" id=1]
-[ext_resource path="res://assets/Pear_Idle0001.png" type="Texture" id=2]
+[ext_resource path="res://assets/Tomato_Idle0001.png" type="Texture" id=2]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 68.9114
 
-[node name="Pear" type="RigidBody2D"]
+[node name="Tomato" type="RigidBody2D"]
+collision_mask = 0
 gravity_scale = 8.0
 script = ExtResource( 1 )
 
@@ -18,11 +19,9 @@ texture = ExtResource( 2 )
 position = Vector2( 0, 9.74008 )
 shape = SubResource( 1 )
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 1.5
-autostart = true
-
 [node name="Body1" type="RigidBody2D" parent="."]
+input_pickable = true
+collision_mask = 0
 mode = 1
 gravity_scale = 15.0
 
@@ -40,6 +39,8 @@ disabled = true
 one_way_collision_margin = 30.0
 
 [node name="Body2" type="RigidBody2D" parent="."]
+input_pickable = true
+collision_mask = 0
 mode = 1
 gravity_scale = 15.0
 
@@ -55,4 +56,3 @@ position = Vector2( 0, 9.74008 )
 shape = SubResource( 1 )
 disabled = true
 one_way_collision_margin = 30.0
-[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

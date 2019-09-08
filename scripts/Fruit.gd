@@ -10,8 +10,14 @@ var cortada = false
 
 func _ready():
 	randomize()
-	born(Vector2(rand_range(100, 1000), rand_range(1000, 1500)))
+	set_process(true)
 	
+func _process(delta):
+	if self.position.y > 700:
+		emit_signal("life")
+		queue_free()
+	if body1.position.y > 700 and body2.position.y > 700:
+		queue_free()
 
 func born(inipos):
 	self.position = inipos
@@ -28,6 +34,7 @@ func cut():
 	if cortada:
 		return
 	cortada = true
+	emit_signal("score")
 	body1.get_node("Shape1").disabled = false
 	body2.get_node("Shape2").disabled = false
 	set_mode(MODE_KINEMATIC)
@@ -35,8 +42,8 @@ func cut():
 	shape.queue_free()
 	body1.set_mode(MODE_RIGID)
 	body2.set_mode(MODE_RIGID)
-	body1.apply_impulse(Vector2(0,0), Vector2(-100, 0).rotated(self.rotation))
-	body2.apply_impulse(Vector2(0,0), Vector2(100, 0).rotated(self.rotation))
+	body1.apply_impulse(Vector2(0,0), Vector2(-300, 0).rotated(self.rotation))
+	body2.apply_impulse(Vector2(0,0), Vector2(300, 0).rotated(self.rotation))
 	body1.set_angular_velocity(get_angular_velocity())
 	body2.set_angular_velocity(get_angular_velocity())
 
