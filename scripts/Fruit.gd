@@ -8,10 +8,13 @@ onready var sprite1 = body1.get_node("Sprite1")
 onready var sprite2 = body2.get_node("Sprite2")
 var cortada = false
 
+signal life
+signal score
+
 func _ready():
-	randomize()
 	set_process(true)
-	
+	randomize()
+
 func _process(delta):
 	if self.position.y > 700:
 		emit_signal("life")
@@ -46,6 +49,3 @@ func cut():
 	body2.apply_impulse(Vector2(0,0), Vector2(300, 0).rotated(self.rotation))
 	body1.set_angular_velocity(get_angular_velocity())
 	body2.set_angular_velocity(get_angular_velocity())
-
-func _on_Timer_timeout():
-	cut()

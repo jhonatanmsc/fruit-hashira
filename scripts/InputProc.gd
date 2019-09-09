@@ -7,6 +7,7 @@ var pressed = false
 var drag = false
 var curpos = Vector2(0,0)
 var prepos = Vector2(0,0) 
+var acabou = false
 
 func _ready():
 	set_process_input(true)
@@ -15,7 +16,7 @@ func _ready():
 	
 func _physics_process(delta):
 	update()
-	if drag and curpos.distance_to(prepos) > 0 and prepos != Vector2(0,0):
+	if drag and curpos.distance_to(prepos) > 0 and prepos != Vector2(0,0) and not acabou:
 		var space_state = get_world_2d().get_direct_space_state()
 		var result = space_state.intersect_ray(prepos, curpos)
 		if not result.empty():
@@ -26,7 +27,6 @@ func _input(event):
 	event = make_input_local(event)
 	if event is InputEventScreenTouch:
 		if event.pressed:
-			print("touch")
 			pressed(event.position)
 		else:
 			released()
@@ -58,5 +58,5 @@ func _on_Limit_timeout():
 	released()
 	
 func _draw():
-	if drag and curpos.distance_to(prepos) > 0 and prepos != Vector2(0,0):
+	if drag and curpos.distance_to(prepos) > 0 and prepos != Vector2(0,0) and not acabou:
 		draw_line(curpos, prepos, Color(1,0,0), 10)
