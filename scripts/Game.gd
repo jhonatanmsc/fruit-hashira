@@ -1,6 +1,6 @@
 extends Node2D
 
-onready var fruits = get_node("Fruits")
+onready var fruits = $Fruits
 
 var avocado = preload("res://scenes/fruits/Avocado.tscn")
 var banana = preload("res://scenes/fruits/Banana.tscn")
@@ -45,14 +45,15 @@ func inc_score():
 	if lifes == 0:
 		return
 	score += 1
-	get_node("Control/Score").set_text(str(score))
+	$Control.get_node("Score").set_text(str(score))
 
 func dec_life():
 	lifes -= 1
 	if lifes == 0:
-		get_node("Control/Bomb3").set_modulate(Color(1, 0, 0))
-		get_node("InputProc").acabou = true
+		$GameOverScreen.start()
+		$Control.get_node("Bomb3").set_modulate(Color(1, 0, 0))
+		$InputProc.acabou = true
 	elif lifes == 1:
-		get_node("Control/Bomb2").set_modulate(Color(1, 0, 0))
+		$Control.get_node("Bomb2").set_modulate(Color(1, 0, 0))
 	elif lifes == 2:
-		get_node("Control/Bomb1").set_modulate(Color(1, 0, 0))
+		$Control.get_node("Bomb1").set_modulate(Color(1, 0, 0))

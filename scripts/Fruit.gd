@@ -1,9 +1,9 @@
 extends RigidBody2D
 
-onready var shape = get_node("Shape")
-onready var sprite0 = get_node("Sprite0")
-onready var body1 = get_node("Body1")
-onready var body2 = get_node("Body2") 
+onready var shape = $Shape
+onready var sprite0 = $Sprite0
+onready var body1 = $Body1
+onready var body2 = $Body2 
 onready var sprite1 = body1.get_node("Sprite1")
 onready var sprite2 = body2.get_node("Sprite2")
 var cortada = false

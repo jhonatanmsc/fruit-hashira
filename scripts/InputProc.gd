@@ -1,7 +1,7 @@
 extends Node2D
 
-onready var inter = get_node("Inter")
-onready var limit = get_node("Limit")
+onready var inter = $Inter
+onready var limit = $Limit
 
 var pressed = false
 var drag = false
