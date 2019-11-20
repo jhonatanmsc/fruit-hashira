@@ -2,23 +2,24 @@ extends Node2D
 
 onready var fruits = $Fruits
 
-var avocado = preload("res://scenes/fruits/Avocado.tscn")
-var banana = preload("res://scenes/fruits/Banana.tscn")
-var lemon = preload("res://scenes/fruits/Lemon.tscn")
-var orange = preload("res://scenes/fruits/Orange.tscn")
-var pear = preload("res://scenes/fruits/Pear.tscn")
-var pineapple = preload("res://scenes/fruits/PineApple.tscn")
-var tomato = preload("res://scenes/fruits/Tomato.tscn")
-var watermelon = preload("res://scenes/fruits/Watermelon.tscn")
-var bomb = preload("res://scenes/Bomb.tscn")
+var peach = preload("res://scenes/fruits/Peach.tscn")
+var pie_lemon = preload("res://scenes/fruits/PieLemon.tscn")
+var honeycomb = preload("res://scenes/fruits/Honeycomb.tscn")
+var apple = preload("res://scenes/fruits/Apple.tscn")
+var strawberry = preload("res://scenes/fruits/Strawberry.tscn")
+var piePumpkin = preload("res://scenes/fruits/PiePumpkin.tscn")
+var chickenLeg = preload("res://scenes/ChickenLeg.tscn")
 
 var score = 0
 var lifes = 3
 
 var fruit_list = [
-		avocado, banana, lemon, 
-		orange, pear, pineapple, 
-		tomato, watermelon, bomb
+		peach, 
+		piePumpkin, 
+		honeycomb, 
+		apple, 
+		pie_lemon,
+		chickenLeg
 	]
 
 func _ready():
@@ -41,10 +42,10 @@ func _on_Generator_timeout():
 		obj.connect("life", self, "dec_life")
 		fruits.add_child(obj)
 		
-func inc_score():
+func inc_score(value):
 	if lifes == 0:
 		return
-	score += 1
+	score += value
 	$Control.get_node("Score").set_text(str(score))
 
 func dec_life():

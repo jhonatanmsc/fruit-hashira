@@ -3,15 +3,15 @@
 [ext_resource path="res://scripts/Game.gd" type="Script" id=1]
 [ext_resource path="res://assets/bgfruitninja.jpg" type="Texture" id=2]
 [ext_resource path="res://scripts/InputProc.gd" type="Script" id=3]
-[ext_resource path="res://assets/hud_vidas.png" type="Texture" id=4]
+[ext_resource path="res://assets/kcal.png" type="Texture" id=4]
 [ext_resource path="res://assets/soupofjustice.ttf" type="DynamicFontData" id=5]
-[ext_resource path="res://assets/bomb100.png" type="Texture" id=6]
+[ext_resource path="res://assets/ChickenLeg.png" type="Texture" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 size = 150
 font_data = ExtResource( 5 )
 
-[sub_resource type="GDScript" id=3]
+[sub_resource type="GDScript" id=2]
 script/source = "extends Control
 
 var pode = false
@@ -39,7 +39,7 @@ func _on_TimerGameOver_timeout():
 	pass # Replace with function body.
 "
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=3]
 size = 150
 font_data = ExtResource( 5 )
 
@@ -79,7 +79,7 @@ tracks/1/keys = {
 script = ExtResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
-scale = Vector2( 0.8, 0.6 )
+scale = Vector2( 0.800003, 0.600003 )
 texture = ExtResource( 2 )
 centered = false
 
@@ -90,7 +90,6 @@ wait_time = 2.0
 autostart = true
 
 [node name="InputProc" type="Node2D" parent="."]
-editor/display_folded = true
 script = ExtResource( 3 )
 
 [node name="Inter" type="Timer" parent="InputProc"]
@@ -104,19 +103,21 @@ margin_right = 40.0
 margin_bottom = 40.0
 
 [node name="TextureRect" type="TextureRect" parent="Control"]
-margin_right = 291.0
-margin_bottom = 316.0
+margin_left = 28.0
+margin_top = 22.0
+margin_right = 245.0
+margin_bottom = 224.0
 rect_scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 4 )
-stretch_mode = 1
+expand = true
 
 [node name="Score" type="Label" parent="Control"]
-margin_left = 173.995
-margin_top = 26.978
-margin_right = 254.995
-margin_bottom = 177.978
+margin_left = 148.093
+margin_top = 5.39333
+margin_right = 229.093
+margin_bottom = 156.393
 custom_fonts/font = SubResource( 1 )
-custom_colors/font_color = Color( 0.333333, 0.639216, 0, 1 )
+custom_colors/font_color = Color( 0.639216, 0.599265, 0, 1 )
 text = "0"
 align = 1
 valign = 1
@@ -128,6 +129,7 @@ margin_top = 36.4398
 margin_right = 1069.28
 margin_bottom = 136.44
 texture = ExtResource( 6 )
+stretch_mode = 1
 
 [node name="Bomb2" type="TextureRect" parent="Control"]
 margin_left = 1069.21
@@ -135,6 +137,7 @@ margin_top = 35.2121
 margin_right = 1169.21
 margin_bottom = 135.212
 texture = ExtResource( 6 )
+stretch_mode = 1
 
 [node name="Bomb3" type="TextureRect" parent="Control"]
 margin_left = 1168.93
@@ -142,18 +145,21 @@ margin_top = 36.3616
 margin_right = 1268.93
 margin_bottom = 136.362
 texture = ExtResource( 6 )
+stretch_mode = 1
 
 [node name="GameOverScreen" type="Control" parent="."]
+editor/display_folded = true
+visible = false
 margin_right = 40.0
 margin_bottom = 40.0
-script = SubResource( 3 )
+script = SubResource( 2 )
 
 [node name="Label" type="Label" parent="GameOverScreen"]
 margin_left = 260.904
 margin_top = 256.245
 margin_right = 986.904
 margin_bottom = 407.245
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.333333, 0.639216, 0, 0 )
 text = "Game Over"
 

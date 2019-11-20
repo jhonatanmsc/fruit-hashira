@@ -33,11 +33,14 @@ func born(inipos):
 	set_linear_velocity(inivel)
 	set_angular_velocity(rand_range(-10, 10))
 	
+func kcal():
+	pass
+	
 func cut():
 	if cortada:
 		return
 	cortada = true
-	emit_signal("score")
+	kcal()
 	body1.get_node("Shape1").disabled = false
 	body2.get_node("Shape2").disabled = false
 	set_mode(MODE_KINEMATIC)
