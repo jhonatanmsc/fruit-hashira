@@ -5,7 +5,7 @@
 [ext_resource path="res://scripts/InputProc.gd" type="Script" id=3]
 [ext_resource path="res://assets/kcal.png" type="Texture" id=4]
 [ext_resource path="res://assets/soupofjustice.ttf" type="DynamicFontData" id=5]
-[ext_resource path="res://assets/ChickenLeg.png" type="Texture" id=6]
+[ext_resource path="res://assets/Heart.png" type="Texture" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 size = 150

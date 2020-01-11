@@ -1,4 +1,4 @@
 extends "res://scripts/Fruit.gd"
 
 func kcal():
-	emit_signal("score", 57)
+	emit_signal("score", 380)

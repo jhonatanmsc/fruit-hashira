@@ -2,25 +2,22 @@ extends Node2D
 
 onready var fruits = $Fruits
 
-var peach = preload("res://scenes/fruits/Peach.tscn")
-var pie_lemon = preload("res://scenes/fruits/PieLemon.tscn")
-var honeycomb = preload("res://scenes/fruits/Honeycomb.tscn")
-var apple = preload("res://scenes/fruits/Apple.tscn")
-var strawberry = preload("res://scenes/fruits/Strawberry.tscn")
-var piePumpkin = preload("res://scenes/fruits/PiePumpkin.tscn")
-var chickenLeg = preload("res://scenes/ChickenLeg.tscn")
+var strawberry = preload("res://scenes/healthy/Strawberry.tscn")
+var apple = preload("res://scenes/healthy/Apple.tscn")
+var turnip = preload("res://scenes/healthy/Turnip.tscn")
+var healthy_list = [strawberry, apple, turnip]
+
+var bacon = preload("res://scenes/unhealthy/Bacon.tscn")
+var piePumpkin = preload("res://scenes/unhealthy/PiePumpkin.tscn")
+var pretzel = preload("res://scenes/unhealthy/Pretzel.tscn")
+var unhealthy_list = [bacon, piePumpkin, pretzel]
+
+var heart = preload("res://scenes/Heart.tscn")
 
 var score = 0
 var lifes = 3
 
-var fruit_list = [
-		peach, 
-		piePumpkin, 
-		honeycomb, 
-		apple, 
-		pie_lemon,
-		chickenLeg
-	]
+var scenes_list = healthy_list + unhealthy_list
 
 func _ready():
 	pass # Replace with function body.
@@ -34,7 +31,7 @@ func _on_Generator_timeout():
 	if lifes <= 0:
 		return
 	for i in range(0, rand_range(2, 5)):
-		var obj = fruit_list[randi() % fruit_list.size()].instance()
+		var obj = scenes_list[randi() % scenes_list.size()].instance()
 		
 		obj.born(Vector2(rand_range(400, 900), 700))
 		if obj.name != "bomb":
@@ -52,9 +49,9 @@ func dec_life():
 	lifes -= 1
 	if lifes == 0:
 		$GameOverScreen.start()
-		$Control.get_node("Bomb3").set_modulate(Color(1, 0, 0))
+		$Control.get_node("Bomb3").set_modulate(Color(0, 1, 1))
 		$InputProc.acabou = true
 	elif lifes == 1:
-		$Control.get_node("Bomb2").set_modulate(Color(1, 0, 0))
+		$Control.get_node("Bomb2").set_modulate(Color(0, 1, 1))
 	elif lifes == 2:
-		$Control.get_node("Bomb1").set_modulate(Color(1, 0, 0))
+		$Control.get_node("Bomb1").set_modulate(Color(0, 1, 1))
